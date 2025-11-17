@@ -8,7 +8,8 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  create(@Body("email") email: string,
+  create(@Body("email") email: string, 
+  // let email = req.body.email
          @Body("password") password: string,
          @Body("name") name: string) {
     this.usersService.create(email, password, name);
