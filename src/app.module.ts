@@ -9,18 +9,16 @@ import { UsersModule } from './users/users.module';
   imports: [
     // MongooseModule.forRoot('mongodb://localhost:27017/nestjs-basic'),
     MongooseModule.forRootAsync({
-    
-        imports: [ConfigModule],
-        useFactory: async (configService:ConfigService) => ({
-          uri: configService.get<string>('MONGODB_URL'),
-        }),
-        inject: [ConfigService],
-
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('MONGODB_URL'),
+      }),
+      inject: [ConfigService],
     }),
     ConfigModule.forRoot({
-      isGlobal:true,
+      isGlobal: true,
     }),
-    UsersModule
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
